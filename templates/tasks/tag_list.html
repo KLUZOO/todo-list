@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container-fluid">
+    <div class="row min-vh-100">
+      <!-- Main content -->
+      <main class="col-md-10 py-4 px-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h2>Tags</h2>
+          <a href="{% url 'tag-create' %}" class="btn btn-primary">Add</a>
+        </div>
+
+        {% if True %}
+          <div class="table-responsive">
+            <table class="table table-bordered text-center align-middle">
+              <thead class="table-light">
+              <tr>
+                <th>Name</th>
+                <th>Update</th>
+                <th>Delete</th>
+              </tr>
+              </thead>
+              <thead>
+              {% for tag in tag_list %}
+                <tr>
+                  <td>{{ tag.name }}</td>
+                  <td>
+                    <a href="{% url 'tag-update' pk=tag.pk %}" class="btn btn-secondary">Update</a>
+                  </td>
+                  <td>
+                    <a href="{% url 'tag-delete' pk=tag.pk %}" class="btn btn-danger">Delete</a>
+                  </td>
+                </tr>
+              {% endfor %}
+              </thead>
+            </table>
+          </div>
+        {% else %}
+          <p class="text-muted">No tags yet. Add your first tag!</p>
+        {% endif %}
+      </main>
+    </div>
+  </div>
+{% endblock %}
