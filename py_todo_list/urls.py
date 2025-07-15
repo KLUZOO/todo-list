@@ -17,6 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from tasks.views import TagsListView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('tags/', TagsListView.as_view(), name='index'),
+    path('tags/', TagsListView.as_view(), name='tags-list'),
 ]
